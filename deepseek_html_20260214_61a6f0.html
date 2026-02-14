@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for my love · valentine</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fce4e4 0%, #ffe9e0 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 1rem;
+      margin: 0;
+    }
+
+    /* main card */
+    .valentine-card {
+      max-width: 680px;
+      width: 100%;
+      background: rgba(255, 250, 245, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 48px 48px 42px 42px;
+      box-shadow: 0 25px 45px -10px rgba(230, 120, 130, 0.4),
+                  0 0 0 1.5px rgba(255, 220, 220, 0.6) inset,
+                  0 0 0 3px #ffffff90 inset;
+      padding: 2.2rem 2rem 2.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid #ffc2c2;
+    }
+
+    /* header with playful hearts */
+    .heart-header {
+      display: flex;
+      justify-content: center;
+      gap: 0.3rem;
+      font-size: 2.6rem;
+      line-height: 1;
+      letter-spacing: 6px;
+      filter: drop-shadow(0 6px 8px #ffb6b6);
+      margin-bottom: 1.2rem;
+      animation: softPulse 3s infinite;
+    }
+
+    @keyframes softPulse {
+      0% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.02); opacity: 1; filter: drop-shadow(0 8px 14px #ff9e9e); }
+      100% { transform: scale(1); opacity: 0.95; }
+    }
+
+    /* title */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: center;
+      color: #b13e4b;
+      background: linear-gradient(135deg, #d65f6f, #b13e4b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.35rem;
+      font-family: 'Playfair Display', 'Quicksand', serif;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 15px #ffcfcf;
+    }
+
+    .sub-header {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #c05967;
+      background: #fee9e9c0;
+      display: inline-block;
+      padding: 0.2rem 1.8rem;
+      border-radius: 60px;
+      margin: 0 auto 1.8rem;
+      backdrop-filter: blur(4px);
+      border: 1px dashed #f7a8a8;
+      letter-spacing: 0.3px;
+    }
+
+    /* photo placeholder / memory strip */
+    .memory-collage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin: 2.2rem 0 2rem;
+    }
+
+    .memory-item {
+      width: 100px;
+      height: 120px;
+      background: #ffe3e3;
+      border-radius: 32px 18px 32px 18px;
+      box-shadow: 0 15px 20px -8px #daa0a0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      transition: 0.2s ease-in-out;
+      border: 2px solid white;
+      transform: rotate(0deg);
+      color: #7a3e3e;
+      background: linear-gradient(145deg, #ffdada, #ffe9e9);
+    }
+
+    .memory-item span {
+      font-size: 1rem;
+      margin-top: 0.3rem;
+      background: #ffe0e0d0;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 600;
+      color: #a52f3f;
+      backdrop-filter: blur(2px);
+    }
+
+    .memory-item:hover {
+      transform: scale(1.07) rotate(1deg);
+      background: #ffdbdb;
+      box-shadow: 0 18px 28px -6px #cc7a7a;
+    }
+
+    /* main love letter */
+    .love-letter {
+      background: #fef6f2e0;
+      border-radius: 40px 40px 30px 30px;
+      padding: 1.9rem 1.8rem;
+      border: 1px solid #ffc7c7;
+      box-shadow: inset 0 0 25px #ffeae3, 0 10px 15px -8px #dba6a6;
+      margin-bottom: 2.2rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .love-letter p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: #3d2b2b;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+
+    .love-letter .signature {
+      font-size: 2rem;
+      font-family: 'Brush Script MT', cursive, 'Playfair Display';
+      text-align: right;
+      color: #c4455c;
+      border-top: 2px dotted #fbb1b1;
+      padding-top: 0.8rem;
+      margin-bottom: 0;
+    }
+
+    .small-note {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #ab5c5c;
+      background: #ffffffb0;
+      padding: 0.6rem 1rem;
+      border-radius: 100px;
+      margin-top: 1rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+
+    /* interactive special part - heart slider / click button */
+    .surprise-box {
+      background: #ffeaee;
+      border-radius: 38px;
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px solid white;
+      box-shadow: 0 4px 12px #feb6b6;
+      margin: 2rem 0 1.2rem;
+    }
+
+    .surprise-box p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #a1404c;
+      margin-bottom: 0.7rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .heart-button {
+      background: #ff4d6d;
+      border: none;
+      color: white;
+      font-size: 1.7rem;
+      padding: 0.5rem 2.2rem;
+      border-radius: 80px;
+      font-weight: 600;
+      box-shadow: 0 10px 0 #ac2f48, 0 8px 25px #f28b8b;
+      cursor: pointer;
+      transition: 0.08s linear;
+      margin: 0.4rem 0 0.8rem;
+      border: 2px solid #ffbfbf;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    .heart-button:active {
+      transform: translateY(8px);
+      box-shadow: 0 2px 0 #ac2f48, 0 8px 20px #f28b8b;
+    }
+
+    .message-reveal {
+      min-height: 60px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #b3415b;
+      background: #ffffffd0;
+      border-radius: 50px;
+      padding: 0.9rem 1.2rem;
+      text-align: center;
+      width: 100%;
+      backdrop-filter: blur(4px);
+      transition: 0.3s;
+      border: 2px dashed #ffaeae;
+    }
+
+    /* countdown & hearts */
+    .footer-hearts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 0.7rem;
+      margin-top: 1rem;
+      color: #a1535f;
+      font-weight: 500;
+    }
+
+    .date-stamp {
+      background: #ffd6d6;
+      border-radius: 60px;
+      padding: 0.3rem 1.3rem;
+      font-size: 1rem;
+      border: 1px solid white;
+    }
+
+    .heart-blink {
+      font-size: 1.3rem;
+      animation: blink 1.4s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.4; transform: scale(0.95); }
+      50% { opacity: 1.2; transform: scale(1.15); color: #e63946; }
+      100% { opacity: 0.4; transform: scale(0.95); }
+    }
+
+    /* tiny responsive touches */
+    @media (max-width: 470px) {
+      .valentine-card { padding: 1.5rem 1rem; }
+      h1 { font-size: 2rem; }
+      .memory-item { width: 75px; height: 95px; font-size: 2rem; }
+      .memory-item span { font-size: 0.75rem; }
+      .love-letter p { font-size: 1.1rem; }
+    }
+
+    /* extra sparkle */
+    .floating-heart {
+      position: fixed;
+      bottom: 15px;
+      right: 20px;
+      font-size: 2.2rem;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 2;
+      animation: float 4s infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(8deg); opacity: 0.9; }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+  </style>
+  <!-- Import cute font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="floating-heart">❤️‍🔥</div>
+
+  <main class="valentine-card">
+
+    <div class="heart-header">
+      <span>❤️</span><span>🧡</span><span>💛</span><span>💖</span><span>💘</span>
+    </div>
+
+    <h1>for my love, [boyfriend's name]</h1>
+    <div class="sub-header">💕 happy valentine’s day 💕</div>
+
+    <!-- little picture-less memory gallery (use your inside jokes / memories) -->
+    <div class="memory-collage">
+      <div class="memory-item">
+        🍜 <span>ramen dates</span>
+      </div>
+      <div class="memory-item">
+        🎮 <span>late night games</span>
+      </div>
+      <div class="memory-item">
+        ☕ <span>morning coffee</span>
+      </div>
+      <div class="memory-item">
+        🌅 <span>sunsets together</span>
+      </div>
+      <div class="memory-item">
+        ✨ <span>us</span>
+      </div>
+    </div>
+
+    <!-- personal letter section — edit freely -->
+    <div class="love-letter">
+      <p>My love,<br><br>
+        Every day with you feels like a little valentine. From the way you make me laugh until I can’t breathe, to the way you hold my hand when we walk — you are my favourite place to be. <br>
+        I made this tiny corner of the internet just for you, because you deserve a million little surprises. <br><br>
+        Thank you for being you. <br>
+        <span class="signature">yours always, [your name] 🩷</span>
+      </p>
+    </div>
+
+    <!-- interactive surprise part: click the heart button! -->
+    <div class="surprise-box">
+      <p>✨ a little valentine magic ✨</p>
+      <button class="heart-button" id="heartButton">
+        <span>❤️</span> click for a secret <span>❤️</span>
+      </button>
+      <div class="message-reveal" id="secretMessage">
+        💬 ...
+      </div>
+    </div>
+
+    <!-- extra sweet note + dynamic countdown -->
+    <div class="small-note">
+      ⏳ countdown to our next hug? 
+      <span id="countdown"></span>
+    </div>
+
+    <div class="footer-hearts">
+      <span class="date-stamp">🍓 14 feb 🍓</span>
+      <span class="heart-blink">❤️ ❤️ ❤️</span>
+      <span class="date-stamp">you + me</span>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      // ----- Countdown to next Valentine OR you can set a special date (like next anniversary) -----
+      function updateCountdown() {
+        const today = new Date();
+        // set next Valentine day: Feb 14 of current year, if passed then next year
+        let nextValentine = new Date(today.getFullYear(), 1, 14); // month 1 = February
+        if (today > nextValentine) {
+          nextValentine.setFullYear(today.getFullYear() + 1);
+        }
+        const diffMs = nextValentine - today;
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const diffHours = Math.floor((diffMs % (86400000)) / (3600000));
+        const diffMinutes = Math.floor((diffMs % 3600000) / 60000);
+
+        const countEl = document.getElementById('countdown');
+        if (countEl) {
+          if (diffDays === 0 && diffHours === 0 && diffMinutes === 0) {
+            countEl.innerText = '💖 today is the day!! 💖';
+          } else {
+            countEl.innerText = `${diffDays}d ${diffHours}h ${diffMinutes}m ✨`;
+          }
+        }
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 60000); // update every minute
+
+      // ----- interactive secret messages (totally customisable!) -----
+      const button = document.getElementById('heartButton');
+      const secretDiv = document.getElementById('secretMessage');
+
+      // array of sweet messages — change them to personal things!
+      const secretMessages = [
+        "💌 you're my favourite notification",
+        "🌸 i love your smile (and your laugh!)",
+        "🍫 you + me = forever sweet",
+        "🎶 every love song reminds me of you",
+        "🐻 thanks for being my best friend",
+        "✨ you make everything better",
+        "💕 today & every day, i choose you",
+        "🌟 ps: i made this whole page for you"
+      ];
+
+      let messageIndex = 0;
+
+      if (button && secretDiv) {
+        button.addEventListener('click', function() {
+          // cycle through messages or pick random? we do both: rotate + random spark
+          if (messageIndex % 3 === 2) {
+            // every third time surprise: random message
+            const randomMsg = secretMessages[Math.floor(Math.random() * secretMessages.length)];
+            secretDiv.innerText = randomMsg;
+          } else {
+            // sequential
+            secretDiv.innerText = secretMessages[messageIndex % secretMessages.length];
+          }
+          messageIndex++;
+
+          // extra cute: little pop effect
+          secretDiv.style.transform = 'scale(1.05)';
+          setTimeout(() => secretDiv.style.transform = 'scale(1)', 150);
+
+          // you can also change the heart button text playfully
+          const hearts = button.querySelectorAll('span');
+          if (hearts.length >= 2) {
+            hearts[0].innerText = '❤️‍🔥';
+            hearts[1].innerText = '❤️‍🔥';
+            setTimeout(() => {
+              hearts[0].innerText = '❤️';
+              hearts[1].innerText = '❤️';
+            }, 400);
+          }
+        });
+      }
+
+      // optional: prefill names (customise here!)
+      // edit the name fields to match yours – you can replace via browser console too
+      const nameTitle = document.querySelector('h1');
+      const signEl = document.querySelector('.signature');
+      // feel free to replace the brackets below with actual names!
+      if (nameTitle && nameTitle.innerText === 'for my love, [boyfriend\'s name]') {
+        // you can set a real name (or leave as is – he'll know it's for him)
+        // nameTitle.innerText = 'for my love, Alex';   // <-- change to his name
+      }
+      if (signEl && signEl.innerText.includes('[your name]')) {
+        // signEl.innerText = 'yours always, Jamie 🩷';   // <-- change to your name
+      }
+
+      // for convenience, you can uncomment the two lines above and replace with actual names.
+      // otherwise it's still cute with generic [brackets] — he'll know 💕
+
+    })();
+  </script>
+
+  <!-- manually add actual names (optional) - just uncomment and edit the lines inside script if you like -->
+  <!-- or simply replace the placeholder texts directly in the html (they are in h1 and signature) -->
+</body>
+</html>
